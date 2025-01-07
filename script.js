@@ -1,7 +1,9 @@
-score = 0;
-cross = true;
+let score = 0;
+let cross = true;
+let isGameOver = false;
 
 document.onkeydown = function(e){
+    if (isGameOver) return; 
     console.log("Key code is: ",e.keyCode)
     if(e.keyCode==38){
         dino = document.querySelector('.dino');
@@ -40,6 +42,7 @@ setInterval(() => {
     if(offsetX < 73 && offsetY < 52){
         gameOver.innerHTML = "Game Over - Reload to start over";
         obstacle.classList.remove('obstacleAni');
+        isGameOver = true;
     }
     else if(offsetX < 145 && cross){
         score+=1;
